@@ -5,7 +5,7 @@ import (
 )
 
 func mkBot(botAPI *tgbotapi.BotAPI) *Bot {
-	return &Bot{botAPI: botAPI, conditions: make(map[*func(message tgbotapi.Message) bool][]func(message tgbotapi.Message, botAPI *tgbotapi.BotAPI, bot *Bot)), sigTerm: -1}
+	return &Bot{botAPI: botAPI, conditions: make(map[*func(message tgbotapi.Message) bool][]func(message tgbotapi.Message, botAPI *tgbotapi.BotAPI, bot *Bot, next func())), sigTerm: -1}
 }
 
 // NewBot creates new bot

@@ -18,7 +18,7 @@ func (bot *Bot) OnMessage(messageText string, callback OnMessageCallback) {
 // OnCondition registers callback on any message that satisfies condition
 func (bot *Bot) OnCondition(condition Condition, callback OnMessageCallback) {
 	if bot.conditions[&condition] == nil {
-		bot.conditions[&condition] = make([]func(message tgbotapi.Message, botAPI *tgbotapi.BotAPI, bot *Bot), 0)
+		bot.conditions[&condition] = make([]func(message tgbotapi.Message, botAPI *tgbotapi.BotAPI, bot *Bot, next func()), 0)
 	}
 
 	bot.conditions[&condition] = append(bot.conditions[&condition], callback)

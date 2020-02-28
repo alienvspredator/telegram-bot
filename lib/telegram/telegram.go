@@ -19,9 +19,22 @@ func (bot *Bot) Start() error {
 	for update := range updates {
 		conditions := bot.conditions
 		for condition, callbacks := range conditions {
+			runNextCond := false
 			if (*condition)(*update.Message) {
 				for _, callback := range callbacks {
-					callback(*update.Message, bot.botAPI, bot)
+					runNextCb := false
+					nextF := func() {
+						runNextCb = true
+						runNextCond = true
+					}
+
+					callback(*update.Message, bot.botAPI, bot, nextF)
+					if !runNextCb {
+						break
+					}
+				}
+				if !runNextCond {
+					break
 				}
 			}
 		}

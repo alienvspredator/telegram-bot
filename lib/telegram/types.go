@@ -5,7 +5,7 @@ import (
 )
 
 // OnMessageCallback is callback of message event
-type OnMessageCallback = func(message tgbotapi.Message, botAPI *tgbotapi.BotAPI, bot *Bot)
+type OnMessageCallback = func(message tgbotapi.Message, botAPI *tgbotapi.BotAPI, bot *Bot, next func())
 
 // Condition function checks is the message satisfies to be called
 type Condition = func(message tgbotapi.Message) bool
