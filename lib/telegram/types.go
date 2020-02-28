@@ -1,6 +1,8 @@
 package telegram
 
-import tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+import (
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+)
 
 // OnMessageCallback is callback of message event
 type OnMessageCallback = func(message tgbotapi.Message, botAPI *tgbotapi.BotAPI, bot *Bot)
