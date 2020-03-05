@@ -29,7 +29,7 @@ func bagBonesMiddleware(message telegram.Message, botAPI *telegram.BotAPI, bot *
 }
 
 func unhandledMiddleware(message telegram.Message, botAPI *telegram.BotAPI, bot *telegram.Bot, next func()) {
-	msg := tgbotapi.NewMessage(message.Chat.ID, "Не знаю что ты мне пишешь, но зовуьт тебя "+message.Chat.FirstName)
+	msg := tgbotapi.NewMessage(message.Chat.ID, "Не знаю что ты мне пишешь, но зовут тебя "+message.Chat.FirstName)
 	botAPI.Send(msg)
 }
 
